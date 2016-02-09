@@ -1,6 +1,6 @@
-# Project 4 - Twitter
+# Project 4 - Twitterly
 
-Twitter is a basic twitter app to read and compose tweets with the [Twitter API](https://apps.twitter.com/).
+Twitterly is a basic twitter app to read and compose tweets with the [Twitter API](https://apps.twitter.com/).
 
 Time spent: 1 hours spent in total
 
