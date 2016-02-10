@@ -13,6 +13,8 @@
 		813C7A411C696B1E00370F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813C7A401C696B1E00370F44 /* Assets.xcassets */; };
 		813C7A441C696B1E00370F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813C7A421C696B1E00370F44 /* LaunchScreen.storyboard */; };
 		8149E1301C696DF300493C23 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149E12F1C696DF300493C23 /* TwitterClient.swift */; };
+		8149E1331C6A9CED00493C23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149E1321C6A9CED00493C23 /* User.swift */; };
+		8149E1351C6A9CFF00493C23 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149E1341C6A9CFF00493C23 /* Tweet.swift */; };
 		BE397BB78A7AFA571FEDE784 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F36F08448100ED40CED8FF84 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		813C7A431C696B1E00370F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		813C7A451C696B1E00370F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8149E12F1C696DF300493C23 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		8149E1321C6A9CED00493C23 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8149E1341C6A9CFF00493C23 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C0407F261EE954F9CFA877DE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F36F08448100ED40CED8FF84 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,6 +67,7 @@
 		813C7A381C696B1D00370F44 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				8149E1311C6A9CC100493C23 /* Models */,
 				8149E12E1C696DB600493C23 /* API */,
 				813C7A391C696B1D00370F44 /* AppDelegate.swift */,
 				813C7A3B1C696B1D00370F44 /* ViewController.swift */,
@@ -80,6 +85,15 @@
 				8149E12F1C696DF300493C23 /* TwitterClient.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		8149E1311C6A9CC100493C23 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8149E1321C6A9CED00493C23 /* User.swift */,
+				8149E1341C6A9CFF00493C23 /* Tweet.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		852463E639FEA818736CDA7F /* Frameworks */ = {
@@ -222,6 +236,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8149E1331C6A9CED00493C23 /* User.swift in Sources */,
+				8149E1351C6A9CFF00493C23 /* Tweet.swift in Sources */,
 				813C7A3C1C696B1D00370F44 /* ViewController.swift in Sources */,
 				8149E1301C696DF300493C23 /* TwitterClient.swift in Sources */,
 				813C7A3A1C696B1D00370F44 /* AppDelegate.swift in Sources */,
