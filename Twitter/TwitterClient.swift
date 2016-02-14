@@ -83,4 +83,10 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
 
     }
+    
+    func retweet(tweetID: String) {
+        print("Attempting to retweet tweetID: \(tweetID)")
+        let retweetURL = NSURL(string: "https://api.twitter.com/1.1/statuses/retweet/\(tweetID).json")
+        //openURL(retweetURL!)
+    }
 }

@@ -17,12 +17,15 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var retweetedLabel: UILabel!
     @IBOutlet weak var retweetedIcon: UIImageView!
     
     @IBOutlet weak var replyIcon: UIImageView!
-    @IBOutlet weak var retweetIcon: UIImageView!
     @IBOutlet weak var likeIcon: UIImageView!
+    
+    var tweetID: String = ""
     
     var tweet: Tweet! {
         didSet {
@@ -31,6 +34,7 @@ class TweetCell: UITableViewCell {
             usernameLabel.text = "@\(tweet.user!.screenname!)"
             thumbImageView.setImageWithURL(tweet.user!.profileImageUrl!)
             timeAgoLabel.text = calculateTimeStamp(tweet.createdAt!.timeIntervalSinceNow)
+            tweetID = tweet.id
             
         }
     }
@@ -70,6 +74,7 @@ class TweetCell: UITableViewCell {
         // Initialization code
         thumbImageView.layer.cornerRadius = 3
         thumbImageView.clipsToBounds = true
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -78,4 +83,12 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onRetweet(sender: AnyObject) {
+        TwitterClient.sharedInstance.retweet(tweetID)
+        retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
+    }
+    
+    @IBAction func onLike(sender: AnyObject) {
+        likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)
+    }
 }
