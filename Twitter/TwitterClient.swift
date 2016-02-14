@@ -84,9 +84,25 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     }
     
-    func retweet(tweetID: String) {
-        print("Attempting to retweet tweetID: \(tweetID)")
-        let retweetURL = NSURL(string: "https://api.twitter.com/1.1/statuses/retweet/\(tweetID).json")
-        //openURL(retweetURL!)
+    func retweet(id: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        POST("1.1/statuses/retweet/\(id).json", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("Retweeted tweet with id: \(id)")
+            completion(error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Couldn't retweet")
+                completion(error: error)
+            }
+        )
     }
+    
+    func likeTweet(id: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        POST("1.1/favorites/create.json?id=\(id)", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("Liked tweet with id: \(id)")
+            completion(error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Couldn't like tweet")
+                completion(error: error)
+            }
+        )}
+    
 }

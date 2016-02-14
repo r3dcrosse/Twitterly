@@ -18,12 +18,12 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var timeAgoLabel: UILabel!
     
     @IBOutlet weak var retweetButton: UIButton!
-    @IBOutlet weak var likeButton: UIButton!
+    
     @IBOutlet weak var retweetedLabel: UILabel!
     @IBOutlet weak var retweetedIcon: UIImageView!
-    
-    @IBOutlet weak var replyIcon: UIImageView!
-    @IBOutlet weak var likeIcon: UIImageView!
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeCountLabel: UILabel!
     
     var tweetID: String = ""
     
@@ -35,6 +35,11 @@ class TweetCell: UITableViewCell {
             thumbImageView.setImageWithURL(tweet.user!.profileImageUrl!)
             timeAgoLabel.text = calculateTimeStamp(tweet.createdAt!.timeIntervalSinceNow)
             tweetID = tweet.id
+            retweetCountLabel.text = String(tweet.retweetCount!)
+            likeCountLabel.text = String(tweet.likeCount!)
+            
+            retweetCountLabel.text! == "0" ? (retweetCountLabel.hidden = true) : (retweetCountLabel.hidden = false)
+            likeCountLabel.text! == "0" ? (likeCountLabel.hidden = true) : (likeCountLabel.hidden = false)
             
         }
     }
@@ -74,7 +79,6 @@ class TweetCell: UITableViewCell {
         // Initialization code
         thumbImageView.layer.cornerRadius = 3
         thumbImageView.clipsToBounds = true
-        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -84,11 +88,28 @@ class TweetCell: UITableViewCell {
     }
 
     @IBAction func onRetweet(sender: AnyObject) {
-        TwitterClient.sharedInstance.retweet(tweetID)
-        retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
+        TwitterClient.sharedInstance.retweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
+            self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
+            
+            if self.retweetCountLabel.text! > "0" {
+                self.retweetCountLabel.text = String(self.tweet.retweetCount! + 1)
+            } else {
+                self.retweetCountLabel.hidden = false
+                self.retweetCountLabel.text = String(self.tweet.retweetCount! + 1)
+            }
+        })
     }
     
     @IBAction func onLike(sender: AnyObject) {
-        likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)
+        TwitterClient.sharedInstance.likeTweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
+            self.likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)
+            
+            if self.likeCountLabel.text! > "0" {
+                self.likeCountLabel.text = String(self.tweet.likeCount! + 1)
+            } else {
+                self.likeCountLabel.hidden = false
+                self.likeCountLabel.text = String(self.tweet.likeCount! + 1)
+            }
+        })
     }
 }
