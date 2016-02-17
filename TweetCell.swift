@@ -42,9 +42,18 @@ class TweetCell: UITableViewCell {
             likeCountLabel.text! == "0" ? (likeCountLabel.hidden = true) : (likeCountLabel.hidden = false)
             
             if (tweet.isRetweeted!) {
-                // set image and label
+                // set image
+                self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
             } else {
-                // set image and label to not retweeted / favorited
+                // set image to not retweeted
+                self.retweetButton.setImage(UIImage(named: "retweet-action.png"), forState: UIControlState.Selected)
+            }
+            
+            if (tweet.isFavorited!) {
+                // set image
+                self.likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)
+            } else {
+                self.likeButton.setImage(UIImage(named: "like-action.png"), forState: UIControlState.Selected)
             }
             
         }
@@ -95,7 +104,6 @@ class TweetCell: UITableViewCell {
 
     @IBAction func onRetweet(sender: AnyObject) {
         TwitterClient.sharedInstance.retweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
-            self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
             
             if self.retweetCountLabel.text! > "0" {
                 self.retweetCountLabel.text = String(self.tweet.retweetCount! + 1)
@@ -103,12 +111,13 @@ class TweetCell: UITableViewCell {
                 self.retweetCountLabel.hidden = false
                 self.retweetCountLabel.text = String(self.tweet.retweetCount! + 1)
             }
+            
+            // ADD FUNCTION TO RELOAD TABLE CELL
         })
     }
     
     @IBAction func onLike(sender: AnyObject) {
         TwitterClient.sharedInstance.likeTweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
-            self.likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)
             
             if self.likeCountLabel.text! > "0" {
                 self.likeCountLabel.text = String(self.tweet.likeCount! + 1)
@@ -116,6 +125,8 @@ class TweetCell: UITableViewCell {
                 self.likeCountLabel.hidden = false
                 self.likeCountLabel.text = String(self.tweet.likeCount! + 1)
             }
+            
+            // ADD FUNCTION TO RELOAD TABLE CELL
         })
     }
 }
