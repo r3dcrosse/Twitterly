@@ -41,6 +41,12 @@ class TweetCell: UITableViewCell {
             retweetCountLabel.text! == "0" ? (retweetCountLabel.hidden = true) : (retweetCountLabel.hidden = false)
             likeCountLabel.text! == "0" ? (likeCountLabel.hidden = true) : (likeCountLabel.hidden = false)
             
+            if (tweet.isRetweeted!) {
+                // set image and label
+            } else {
+                // set image and label to not retweeted / favorited
+            }
+            
         }
     }
     
