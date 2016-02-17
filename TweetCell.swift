@@ -71,7 +71,7 @@ class TweetCell: UITableViewCell {
         } else if (rawTime/60/60/24 <= 365) { // DAYS
             timeAgo = rawTime/60/60/24
             timeChar = "d"
-        } else if (rawTime/(3153600) <= 1) { // YEARS
+        } else if (rawTime/(60/60/24/365) <= 1) { // ROUGH ESTIMATE OF YEARS
             timeAgo = rawTime/60/60/24/365
             timeChar = "y"
         }
