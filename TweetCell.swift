@@ -9,6 +9,11 @@
 import UIKit
 import AFNetworking
 
+protocol TweetCellButtonDelegate: class {
+    func retweetClicked(tweetCell: TweetCell)
+    func favoriteClicked(tweetCell: TweetCell)
+}
+
 class TweetCell: UITableViewCell {
 
     @IBOutlet weak var thumbImageView: UIImageView!
@@ -17,13 +22,15 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     
-    @IBOutlet weak var retweetButton: UIButton!
-    
     @IBOutlet weak var retweetedLabel: UILabel!
     @IBOutlet weak var retweetedIcon: UIImageView!
     @IBOutlet weak var retweetCountLabel: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeCountLabel: UILabel!
+    
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
+    
+    weak var buttonDelegate: TweetCellButtonDelegate?
     
     var tweetID: String = ""
     
@@ -39,23 +46,14 @@ class TweetCell: UITableViewCell {
             likeCountLabel.text = String(tweet.likeCount!)
             
             retweetCountLabel.text! == "0" ? (retweetCountLabel.hidden = true) : (retweetCountLabel.hidden = false)
+            tweet.isRetweeted! ? // Check if tweet has been retweeted, set button image depending on isRetweeted
+                (self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)) :
+                (self.retweetButton.setImage(UIImage(named: "retweet-action.png"), forState: UIControlState.Selected))
+            
             likeCountLabel.text! == "0" ? (likeCountLabel.hidden = true) : (likeCountLabel.hidden = false)
-            
-            if (tweet.isRetweeted!) {
-                // set image
-                self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
-            } else {
-                // set image to not retweeted
-                self.retweetButton.setImage(UIImage(named: "retweet-action.png"), forState: UIControlState.Selected)
-            }
-            
-            if (tweet.isFavorited!) {
-                // set image
-                self.likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)
-            } else {
-                self.likeButton.setImage(UIImage(named: "like-action.png"), forState: UIControlState.Selected)
-            }
-            
+            tweet.isFavorited! ? // Check if tweet has been favorited, set button image depending on isFavorited
+                (self.likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)) :
+                (self.likeButton.setImage(UIImage(named: "like-action.png"), forState: UIControlState.Selected))
         }
     }
     
@@ -103,30 +101,12 @@ class TweetCell: UITableViewCell {
     }
 
     @IBAction func onRetweet(sender: AnyObject) {
-        TwitterClient.sharedInstance.retweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
-            
-            if self.retweetCountLabel.text! > "0" {
-                self.retweetCountLabel.text = String(self.tweet.retweetCount! + 1)
-            } else {
-                self.retweetCountLabel.hidden = false
-                self.retweetCountLabel.text = String(self.tweet.retweetCount! + 1)
-            }
-            
-            // ADD FUNCTION TO RELOAD TABLE CELL
-        })
+        buttonDelegate?.retweetClicked(self)
     }
     
+    
     @IBAction func onLike(sender: AnyObject) {
-        TwitterClient.sharedInstance.likeTweet(Int(tweetID)!, params: nil, completion: {(error) -> () in
-            
-            if self.likeCountLabel.text! > "0" {
-                self.likeCountLabel.text = String(self.tweet.likeCount! + 1)
-            } else {
-                self.likeCountLabel.hidden = false
-                self.likeCountLabel.text = String(self.tweet.likeCount! + 1)
-            }
-            
-            // ADD FUNCTION TO RELOAD TABLE CELL
-        })
+        buttonDelegate?.favoriteClicked(self)
     }
+
 }

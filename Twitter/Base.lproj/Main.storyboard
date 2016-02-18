@@ -121,7 +121,7 @@
                                                     </constraints>
                                                     <state key="normal" title="0" image="retweet-action"/>
                                                     <connections>
-                                                        <action selector="onRetweet:" destination="btg-6e-Jil" eventType="touchUpInside" id="YmL-g6-VPG"/>
+                                                        <action selector="onRetweet:" destination="btg-6e-Jil" eventType="touchUpInside" id="vlf-Rd-4Kn"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ght-vR-SRg">
@@ -132,7 +132,7 @@
                                                     </constraints>
                                                     <state key="normal" image="like-action"/>
                                                     <connections>
-                                                        <action selector="onLike:" destination="btg-6e-Jil" eventType="touchUpInside" id="q7X-pT-ics"/>
+                                                        <action selector="onLike:" destination="btg-6e-Jil" eventType="touchUpInside" id="OeJ-j5-P75"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pak-fn-1SQ">
@@ -174,10 +174,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="likeButton" destination="ght-vR-SRg" id="QV6-xv-c3M"/>
+                                            <outlet property="likeButton" destination="ght-vR-SRg" id="CFM-Hm-HOy"/>
                                             <outlet property="likeCountLabel" destination="7UJ-E7-n6y" id="VCX-ty-Nfx"/>
                                             <outlet property="nameLabel" destination="wSa-P2-h7A" id="NsW-CM-qKg"/>
-                                            <outlet property="retweetButton" destination="LfX-Is-h2I" id="Z4o-9K-yFg"/>
+                                            <outlet property="retweetButton" destination="LfX-Is-h2I" id="v30-NY-vU4"/>
                                             <outlet property="retweetCountLabel" destination="pak-fn-1SQ" id="4OW-l3-QBq"/>
                                             <outlet property="thumbImageView" destination="Taf-Qg-EJ7" id="UR1-6S-gbm"/>
                                             <outlet property="timeAgoLabel" destination="xg3-yX-bnd" id="f4Q-Vq-1KO"/>
