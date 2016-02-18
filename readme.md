@@ -2,7 +2,7 @@
 
 Twitterly is a basic twitter app to read and compose tweets with the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 12 hours spent in total
+Time spent: 15 hours spent in total
 
 ## User Stories
 
@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
-- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
+- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
 - [x] User can pull to refresh.
 
 The following **additional** features are implemented:
@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Retweeting using Twitter's API was pretty difficult!
-2.
+2. Getting the retweet/like buttons to change once the tweet was liked or unliked was pretty hard!
 
 ## Video Walkthrough
 
