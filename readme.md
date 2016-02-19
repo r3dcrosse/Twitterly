@@ -33,7 +33,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![Twitterly Demo](screenshots/Twitterly_v1.gif)
+![Twitterly Demo](screenshots/Twitterly_v2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
