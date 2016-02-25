@@ -10,6 +10,7 @@ import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellButtonDelegate {
 
+    var endpoint: String!
     var tweets: [Tweet]?
     var refreshControl: UIRefreshControl!
     
@@ -24,7 +25,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.estimatedRowHeight = 120
 
         // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion:  { (tweets, error) -> () in
+        TwitterClient.sharedInstance.getEndpointTimelineWithParams(endpoint, params: nil, completion:  { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
         })
@@ -64,7 +65,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
         // Make network request to fetch latest data
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion:  { (tweets, error) -> () in
+        TwitterClient.sharedInstance.getEndpointTimelineWithParams(endpoint, params: nil, completion:  { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
         })

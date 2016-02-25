@@ -19,8 +19,9 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var tweetLabel: UILabel!
+    @IBOutlet weak var tweetLabel: UITextView!
     @IBOutlet weak var timeAgoLabel: UILabel!
+    @IBOutlet weak var tweetImage: UIImageView!
     
     @IBOutlet weak var retweetedLabel: UILabel!
     @IBOutlet weak var retweetedIcon: UIImageView!
