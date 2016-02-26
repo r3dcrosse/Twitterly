@@ -31,13 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             // Tweets home timeline endpoint
-            let tweetsHomeTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavViewController") as! UINavigationController
+            let tweetsHomeTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsHomeNavViewController") as! UINavigationController
             let tweetsHomeTimelineViewController = tweetsHomeTimelineNavController.topViewController as! TweetsViewController
             tweetsHomeTimelineViewController.endpoint = "home_timeline"
             tweetsHomeTimelineNavController.tabBarItem.title = "Home Timeline"
             
             // Tweets user timeline endpoint
-            let tweetsUserTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsNavViewController") as! UINavigationController
+            let tweetsUserTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsUserNavController") as! UINavigationController
             let tweetsUserTimelineViewController = tweetsUserTimelineNavController.topViewController as! TweetsViewController
             tweetsUserTimelineViewController.endpoint = "user_timeline"
             tweetsUserTimelineNavController.tabBarItem.title = "User Timeline"
