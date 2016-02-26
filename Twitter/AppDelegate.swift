@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil {
             // Go to logged in screen
             print("Current user detected: \(User.currentUser?.name)")
+            
             instantiateTabBar()
         }
         
