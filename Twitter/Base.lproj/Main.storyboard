@@ -46,31 +46,12 @@
                     <navigationItem key="navigationItem" id="Zkx-fK-8rS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="4dV-9I-vgU" kind="modal" identifier="loginSegue" id="8GR-e5-Tyn"/>
+                        <segue destination="bfA-ya-n59" kind="modal" identifier="loginSegue" id="40Y-ID-Fi2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1226" y="366"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="5gQ-DD-aZe">
-            <objects>
-                <tabBarController id="4dV-9I-vgU" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="bgq-aC-6yx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="bfA-ya-n59" kind="push" id="ryn-rt-6co"/>
-                        <segue destination="xro-jR-tTy" kind="push" id="MRa-6M-vzS"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nrN-mH-Ra1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1720" y="366"/>
+            <point key="canvasLocation" x="1214" y="366"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="BbQ-wU-S0V">
@@ -254,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tj4-A0-MKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874" y="-48"/>
+            <point key="canvasLocation" x="2486" y="-88"/>
         </scene>
         <!--Tweet Detail View Controller-->
         <scene sceneID="iNY-dg-lHK">
@@ -391,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLj-DN-mog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3485" y="-48"/>
+            <point key="canvasLocation" x="3015" y="-88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BaL-Qd-Rvw">
@@ -415,7 +396,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFs-Pb-HE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="-48"/>
+            <point key="canvasLocation" x="1962" y="-88"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="xo1-na-GFh">
@@ -603,7 +584,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7K-MC-4MM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874" y="807"/>
+            <point key="canvasLocation" x="2486" y="751"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7s-Ju-AAR">
@@ -624,7 +605,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jx6-cz-dz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="807"/>
+            <point key="canvasLocation" x="1962" y="751"/>
         </scene>
     </scenes>
     <resources>

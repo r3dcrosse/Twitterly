@@ -23,34 +23,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil {
             // Go to logged in screen
             print("Current user detected: \(User.currentUser?.name)")
-            //let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavViewController") as UIViewController
-            //window?.rootViewController = vc
-            
-            window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            // Tweets home timeline endpoint
-            let tweetsHomeTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsHomeNavViewController") as! UINavigationController
-            let tweetsHomeTimelineViewController = tweetsHomeTimelineNavController.topViewController as! TweetsViewController
-            tweetsHomeTimelineViewController.endpoint = "home_timeline"
-            tweetsHomeTimelineNavController.tabBarItem.title = "Home Timeline"
-            
-            // Tweets user timeline endpoint
-            let tweetsUserTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsUserNavController") as! UINavigationController
-            let tweetsUserTimelineViewController = tweetsUserTimelineNavController.topViewController as! TweetsViewController
-            tweetsUserTimelineViewController.endpoint = "user_timeline"
-            tweetsUserTimelineNavController.tabBarItem.title = "User Timeline"
-            
-            // Tab bar controller setup
-            let tabBarController = UITabBarController()
-            tabBarController.viewControllers = [tweetsHomeTimelineNavController, tweetsUserTimelineNavController]
-            
-            window?.rootViewController = tabBarController
-            window?.makeKeyAndVisible()
+            instantiateTabBar()
         }
         
         return true
+    }
+    
+    func instantiateTabBar() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // Tweets home timeline endpoint
+        let tweetsHomeTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsHomeNavViewController") as! UINavigationController
+        let tweetsHomeTimelineViewController = tweetsHomeTimelineNavController.topViewController as! TweetsViewController
+        tweetsHomeTimelineViewController.endpoint = "home_timeline"
+        tweetsHomeTimelineNavController.tabBarItem.title = "Home Timeline"
+        
+        // Tweets user timeline endpoint
+        let tweetsUserTimelineNavController = storyboard.instantiateViewControllerWithIdentifier("TweetsUserNavController") as! UINavigationController
+        let tweetsUserTimelineViewController = tweetsUserTimelineNavController.topViewController as! TweetsViewController
+        tweetsUserTimelineViewController.endpoint = "user_timeline"
+        tweetsUserTimelineNavController.tabBarItem.title = "User Timeline"
+        
+        // Tab bar controller setup
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [tweetsHomeTimelineNavController, tweetsUserTimelineNavController]
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
     
     func userDidLogout() {
@@ -74,6 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if User.currentUser != nil {
+            instantiateTabBar()
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

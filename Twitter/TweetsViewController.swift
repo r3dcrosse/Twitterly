@@ -23,12 +23,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-
-        // Do any additional setup after loading the view.
+        
+        print("CURRENT ENDPOINT: \(endpoint)")
+        
         TwitterClient.sharedInstance.getEndpointTimelineWithParams(endpoint, params: nil, completion:  { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
         })
+        
+        // Do any additional setup after loading the view.
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
