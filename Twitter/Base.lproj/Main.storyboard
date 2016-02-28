@@ -159,7 +159,7 @@
                                                     </constraints>
                                                     <state key="normal" title="0" image="reply-action_0"/>
                                                     <connections>
-                                                        <segue destination="K30-Hq-Djq" kind="push" identifier="replyTweetSegue" id="Hh9-rw-nbq"/>
+                                                        <segue destination="K30-Hq-Djq" kind="modal" identifier="replyTweetSegue" id="Hh9-rw-nbq"/>
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="This is the text of the twweeeeettt!!" translatesAutoresizingMaskIntoConstraints="NO" id="edq-E6-e0S">
@@ -251,7 +251,7 @@
                         <barButtonItem key="rightBarButtonItem" title="New Tweet" id="saj-MY-iZs">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="K30-Hq-Djq" kind="push" identifier="newTweetSegue" id="6j2-3r-gHG"/>
+                                <segue destination="K30-Hq-Djq" kind="modal" identifier="newTweetSegue" id="6j2-3r-gHG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -346,7 +346,7 @@
                                 </constraints>
                                 <state key="normal" title="0" image="reply-action_0"/>
                                 <connections>
-                                    <segue destination="K30-Hq-Djq" kind="push" identifier="replyTweetSegue" id="Hom-8L-IPA"/>
+                                    <segue destination="K30-Hq-Djq" kind="modal" identifier="replyTweetSegue" id="Hom-8L-IPA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbr-m0-Xxi">
@@ -412,7 +412,7 @@
                         <barButtonItem key="rightBarButtonItem" title="New Tweet" id="guo-ZH-hTR">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="K30-Hq-Djq" kind="push" identifier="newTweetSegue" id="C5a-Tl-SeE"/>
+                                <segue destination="K30-Hq-Djq" kind="modal" identifier="newTweetSegue" id="C5a-Tl-SeE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -445,21 +445,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae6-X9-5tc">
-                                <rect key="frame" x="0.0" y="64" width="414" height="258"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Hello World" translatesAutoresizingMaskIntoConstraints="NO" id="ae6-X9-5tc">
+                                <rect key="frame" x="0.0" y="67" width="414" height="255"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="258" id="c6M-g9-V5o"/>
+                                    <constraint firstAttribute="height" constant="255" id="c6M-g9-V5o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="K30-Hq-Djq" id="v9v-kk-68X"/>
+                                </connections>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcW-Ig-M2o">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0OT-cj-mth">
+                                        <rect key="frame" x="362" y="30" width="42" height="30"/>
+                                        <state key="normal" title="Tweet">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSendTweet:" destination="K30-Hq-Djq" eventType="touchUpInside" id="2tx-QY-lLP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-we-OlB">
+                                        <rect key="frame" x="7" y="30" width="48" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onCancel:" destination="K30-Hq-Djq" eventType="touchUpInside" id="4m9-dK-nkX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0OT-cj-mth" secondAttribute="trailing" constant="10" id="Ngs-KN-hEL"/>
+                                    <constraint firstItem="0OT-cj-mth" firstAttribute="top" secondItem="BcW-Ig-M2o" secondAttribute="top" constant="30" id="e26-M3-OKn"/>
+                                    <constraint firstItem="Vgo-we-OlB" firstAttribute="top" secondItem="BcW-Ig-M2o" secondAttribute="top" constant="30" id="s7h-Ha-GGJ"/>
+                                    <constraint firstItem="Vgo-we-OlB" firstAttribute="leading" secondItem="BcW-Ig-M2o" secondAttribute="leading" constant="7" id="wJA-vL-9xp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ae6-X9-5tc" firstAttribute="leading" secondItem="6Lo-5G-LmA" secondAttribute="leading" id="CKy-64-l4S"/>
-                            <constraint firstItem="ae6-X9-5tc" firstAttribute="top" secondItem="yCP-j0-RXa" secondAttribute="bottom" id="kPO-CV-FPP"/>
+                            <constraint firstAttribute="trailing" secondItem="BcW-Ig-M2o" secondAttribute="trailing" id="TI4-Hc-5cd"/>
+                            <constraint firstItem="BcW-Ig-M2o" firstAttribute="leading" secondItem="6Lo-5G-LmA" secondAttribute="leading" id="UvU-T2-5EJ"/>
+                            <constraint firstItem="ae6-X9-5tc" firstAttribute="top" secondItem="yCP-j0-RXa" secondAttribute="bottom" constant="47" id="kPO-CV-FPP"/>
                             <constraint firstAttribute="trailing" secondItem="ae6-X9-5tc" secondAttribute="trailing" id="rbA-Vm-Kpk"/>
+                            <constraint firstItem="HKX-bD-TvU" firstAttribute="top" secondItem="BcW-Ig-M2o" secondAttribute="bottom" constant="668" id="u9T-W9-e00"/>
+                            <constraint firstItem="BcW-Ig-M2o" firstAttribute="top" secondItem="6Lo-5G-LmA" secondAttribute="top" id="vFF-iB-P8p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bis-YA-qSZ">
@@ -474,6 +511,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="tweetText" destination="ae6-X9-5tc" id="hr5-eb-A1B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcK-09-IWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -633,7 +673,7 @@
                         <barButtonItem key="rightBarButtonItem" title="New Tweet" id="SFW-6C-JS3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="K30-Hq-Djq" kind="push" identifier="newTweetSegue" id="GuG-p8-EJF"/>
+                                <segue destination="K30-Hq-Djq" kind="modal" identifier="newTweetSegue" id="GuG-p8-EJF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
