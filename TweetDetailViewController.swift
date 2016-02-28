@@ -52,6 +52,9 @@ class TweetDetailViewController: UIViewController {
         // make sure imageView can be interacted with by user
         thumbImageView.userInteractionEnabled = true
         
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -162,14 +165,20 @@ class TweetDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "detailToProfileSegue" {
+            let tweet = self.tweet
+            
+            let profileTimelineViewController = segue.destinationViewController as! ProfileViewController
+            profileTimelineViewController.tweet = tweet
+        }
     }
-    */
+    
 
 }

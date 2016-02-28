@@ -32,6 +32,9 @@ class ProfileViewController: UIViewController {
         
         thumbImageView.setImageWithURL(tweet.user!.profileImageUrl!)
         backgroundImageView.setImageWithURL(tweet.user!.profileBackgroundImageUrl!)
+        
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
