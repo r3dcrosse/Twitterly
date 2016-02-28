@@ -31,7 +31,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             "1.1/statuses/\(endpoint).json",
             parameters: params,
             success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-                print("\(endpoint): \(response!)")
+                //print("\(endpoint): \(response!)")
                 let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
                 
                 completion(tweets: tweets, error: nil)

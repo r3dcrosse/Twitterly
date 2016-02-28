@@ -55,6 +55,7 @@ class TweetCell: UITableViewCell {
             tweet.isFavorited! ? // Check if tweet has been favorited, set button image depending on isFavorited
                 (self.likeButton.setImage(UIImage(named: "like-action-on.png"), forState: UIControlState.Selected)) :
                 (self.likeButton.setImage(UIImage(named: "like-action.png"), forState: UIControlState.Selected))
+            
         }
     }
     
@@ -87,7 +88,6 @@ class TweetCell: UITableViewCell {
         return "\(timeAgo)\(timeChar)"
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -109,5 +109,7 @@ class TweetCell: UITableViewCell {
     @IBAction func onLike(sender: AnyObject) {
         buttonDelegate?.favoriteClicked(self)
     }
-
+    
 }
+
+

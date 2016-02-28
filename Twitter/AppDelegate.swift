@@ -23,8 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil {
             // Go to logged in screen
             print("Current user detected: \(User.currentUser?.name)")
-            
-            instantiateTabBar()
+            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavViewController") as UIViewController
+            window?.rootViewController = vc
+            //instantiateTabBar()
         }
         
         return true
@@ -77,9 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if User.currentUser != nil {
-            instantiateTabBar()
-        }
     }
 
     func applicationWillTerminate(application: UIApplication) {

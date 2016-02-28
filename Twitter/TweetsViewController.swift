@@ -10,11 +10,12 @@ import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellButtonDelegate {
 
-    var endpoint: String!
+    var endpoint: String! = "home_timeline"
     var tweets: [Tweet]?
     var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         refreshControl.endRefreshing()
     }
+    
+
     
     func retweetClicked(tweetCell: TweetCell) {
         
@@ -157,15 +160,41 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             }) // END CLOSURE
         ) // END TERNARY OPERATOR
     }
+    
+    func thumbImageClicked(tweetCell: TweetCell) {
+        performSegueWithIdentifier("profileViewSegue", sender: self)
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "tweetDetailSegue" {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.row]
+            
+            let tweetDetailViewController = segue.destinationViewController as! TweetDetailViewController
+            tweetDetailViewController.tweet = tweet
+            
+        } else if segue.identifier == "profileViewSegue" {
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as! TweetCell
+            
+            let indexPath = tableView.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.row]
+            
+            let profileTimelineViewController = segue.destinationViewController as! ProfileViewController
+            profileTimelineViewController.tweet = tweet
+        }
+        
+        
+
     }
-    */
+    
 
 }
