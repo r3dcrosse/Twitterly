@@ -128,4 +128,15 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    func sendTweet(status: String, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        POST("1.1/statuses/update.json?status=\(status)", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("Sent a tweet")
+            completion(error: nil)
+            }, failure:  { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Couldn't send a tweet...")
+                completion(error: error)
+            }
+        )
+    }
+    
 }

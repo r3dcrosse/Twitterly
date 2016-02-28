@@ -190,8 +190,22 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             
             let profileTimelineViewController = segue.destinationViewController as! ProfileViewController
             profileTimelineViewController.tweet = tweet
+            
+        } else if segue.identifier == "newTweetSegue" {
+            let composeTweetView = segue.destinationViewController as! NewTweetViewController
+            composeTweetView.user = User.currentUser
+            
+        } else if segue.identifier == "replyTweetSegue" {
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as! TweetCell
+            
+            let indexPath = tableView.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.row]
+            
+            let composeTweetView = segue.destinationViewController as! NewTweetViewController
+            composeTweetView.tweet = tweet
         }
-        
         
 
     }

@@ -177,6 +177,17 @@ class TweetDetailViewController: UIViewController {
             
             let profileTimelineViewController = segue.destinationViewController as! ProfileViewController
             profileTimelineViewController.tweet = tweet
+        } else if segue.identifier == "newTweetSegue" {
+            
+            // Can use this later to send things like current location
+            let composeTweetView = segue.destinationViewController as! NewTweetViewController
+            composeTweetView.user = User.currentUser
+            
+        } else if segue.identifier == "replyTweetSegue" {
+            let tweet = self.tweet
+            
+            let composeTweetView = segue.destinationViewController as! NewTweetViewController
+            composeTweetView.tweet = tweet
         }
     }
     
